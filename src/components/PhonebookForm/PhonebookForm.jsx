@@ -1,15 +1,17 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts } from 'redux/contanctsSlice';
+
 import css from './PhonebookForm.module.css';
 import Notiflix from 'notiflix';
+// import { fetchContacts } from 'sevices/mockaAPI';
+import { addContact } from 'redux/contacts.operatons';
 
 const PhonebookForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(state => state.contacts.items)
+  const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -34,15 +36,18 @@ const PhonebookForm = () => {
   const handleSubmitt = e => {
     e.preventDefault();
     const name = e.target.name.value;
-    const number = e.target.number.value
-        if (
+    const number = e.target.number.value;
+
+    if (
       contacts.filter(contact => {
         return contact.name === name;
       }).length
     ) {
       return Notiflix.Notify.warning(`${name} in already in contacts`);
     }
-    dispatch(addContacts(name,number));
+    const contact = { name: e.target.name.value, phone: e.target.number.value };
+    // dispatch(addContacts(name,number));
+    dispatch(addContact(contact));
     reset();
   };
 
@@ -86,6 +91,5 @@ const PhonebookForm = () => {
     </>
   );
 };
-
 
 export default PhonebookForm;

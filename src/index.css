@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: aliceblue;
 }
 
 code {
@@ -33,4 +34,14 @@ ul{
   padding: 0;
   list-style: none;
   margin: 0;
+}
+#root{
+  width: 419px;
+  margin: 0 auto;
+  border: 1px solid black;
+  margin-top: 30px;
+  background: white;
+  padding: 15px;
+  box-shadow: 3px 2px 16px;
+  border-radius: 15px;
 }
