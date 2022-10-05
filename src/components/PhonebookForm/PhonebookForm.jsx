@@ -35,9 +35,6 @@ const PhonebookForm = () => {
 
   const handleSubmitt = e => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const number = e.target.number.value;
-
     if (
       contacts.filter(contact => {
         return contact.name === name;
