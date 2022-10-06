@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/contacts.operatons';
-import { deleteContact } from 'redux/contanctsSlice';
+import { deleteContact, getContacts } from 'redux/contacts.operatons';
+import { contactItems, filterItems } from 'redux/contactsSelector';
+
 import css from './Contacts.module.css';
 
 const Contacts = () => {
-  const filterState = useSelector(state => state.filter);
-  const contacts = useSelector(state => state.contacts.items);
-  console.log(contacts);
+  const filterState = useSelector(filterItems);
+  const contacts = useSelector(contactItems);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,14 +50,6 @@ const Contacts = () => {
   );
 };
 
-Contacts.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-};
+
 
 export default Contacts;

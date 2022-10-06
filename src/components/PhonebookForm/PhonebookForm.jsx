@@ -6,12 +6,13 @@ import css from './PhonebookForm.module.css';
 import Notiflix from 'notiflix';
 // import { fetchContacts } from 'sevices/mockaAPI';
 import { addContact } from 'redux/contacts.operatons';
+import { contactItems } from 'redux/contactsSelector';
 
 const PhonebookForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(contactItems);
   const dispatch = useDispatch();
 
   const handleChange = e => {
